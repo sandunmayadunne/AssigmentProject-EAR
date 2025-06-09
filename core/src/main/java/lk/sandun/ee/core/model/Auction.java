@@ -6,49 +6,53 @@ public class Auction implements Serializable {
     private Long id;
     private String title;
     private String description;
-    private Double startingPrice;
-    private Double currentBid;
+    private double currentBid;
+    private String lastBidder;
 
-    public Auction() {
+    private static Long counter = 1L;
+
+    public Auction(String title, String description) {
+        this.id = counter++;
+        this.title = title;
+        this.description = description;
+        this.currentBid = 0.0;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getStartingPrice() {
-        return startingPrice;
-    }
-
-    public void setStartingPrice(Double startingPrice) {
-        this.startingPrice = startingPrice;
-    }
-
-    public Double getCurrentBid() {
+    public double getCurrentBid() {
         return currentBid;
     }
 
-    public void setCurrentBid(Double currentBid) {
+    public void setCurrentBid(double currentBid) {
         this.currentBid = currentBid;
+    }
+
+    @Override
+    public String toString() {
+        return "Auction{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", currentBid=" + currentBid +
+                '}';
+    }
+
+    public String getLastBidder() {
+        return lastBidder;
+    }
+
+    public void setLastBidder(String lastBidder) {
+        this.lastBidder = lastBidder;
     }
 }
